@@ -1,0 +1,46 @@
+# Bağımlılıklar
+node_modules/
+.pnp/
+.pnp.js
+
+# Ortam değişkenleri (gizli anahtarlar burada tutulur, depoya GİRMEZ)
+.env
+.env.local
+.env.*.local
+
+# Expo / Metro önbelleği
+.expo/
+.expo-shared/
+dist/
+web-build/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Yerel test çıktıları
+coverage/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# İşletim sistemi / editör
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Yerel araç ayarları ve gizli dosyalar
+.abacusai/
+.agents/
+.codex/
+.env.*
+!.env.example
+*.pem
+*.keystore
+credentials.json
+credentials/
