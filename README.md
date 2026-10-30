@@ -44,7 +44,7 @@ Cloudflare Pages kullanılıyorsa:
 - Build environment: `EXPO_PUBLIC_SUPABASE_URL` ve `EXPO_PUBLIC_SUPABASE_ANON_KEY` (uygulamanın mevcut Supabase projesinin istemciye açık değerleri)
 - Custom domain: `aileligi.narvaai.com`
 
-Workers Static Assets kullanılıyorsa aynı üretim çıktısı statik varlık dizini olarak seçilmelidir. Tüm depo kökünü yayınlamayın.
+Mevcut yayın Cloudflare Workers Static Assets kullanır. Workers Builds kök dizini `mobile`, build komutu `npm run typecheck && npm run build:web`, deploy komutu `npx wrangler deploy` olarak ayarlanır. `mobile/wrangler.json` yalnızca `dist` klasörünü yayınlar. Build değişkenleri yukarıdaki Supabase değerleridir. Tüm depo kökünü yayınlamayın.
 
 `npm run build:web` web çıktısını doğrular; manifest, simgeler, uygulama açılışı, giriş yolları veya gizlilik sayfası eksikse başarısız olur. `.env` ve imzalama anahtarları yayın klasörüne kopyalanmamalıdır. Supabase service-role anahtarı hiçbir `EXPO_PUBLIC_*` değişkeninde kullanılmamalıdır.
 
