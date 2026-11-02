@@ -20,7 +20,7 @@ import { formatDateTR } from '@/lib/utils';
 import { APP_VERSION } from '@/constants/config';
 import { fontSize, spacing, useColors, type ThemeColors } from '@/theme';
 
-/** Ayarlar: genel, aile, sıfırlama, AI Hakem, alışveriş, tercihler, destek, Plus. */
+/** Ayarlar: genel, aile, sıfırlama, alışveriş, tercihler, destek, Plus. */
 export default function SettingsScreen() {
   const colors = useColors();
   const styles = createStyles(colors);
@@ -85,19 +85,6 @@ export default function SettingsScreen() {
           onPress={() => router.push('/settings/weekly-reset')}
         />
       ) : null}
-      <ListRow
-        icon="🔨"
-        title={t('settings.aiJudge')}
-        subtitle={t('settings.aiJudgeInfo').slice(0, 40) + '...'}
-        tone="ai"
-        onPress={() => router.push('/settings/ai-judge')}
-        right={
-          <View style={styles.rowRight}>
-            <Pill label={t('common.soon')} tone="gold" />
-            <Text style={styles.chevron}>›</Text>
-          </View>
-        }
-      />
       <ListRow
         icon="🛒"
         title={t('shopping.title')}

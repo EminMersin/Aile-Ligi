@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { EmojiPicker, Field, Stepper } from '@/components/forms';
-import { ComingSoonSheet, ConfirmSheet, InfoSheet, MemberPickerSheet, SheetModal } from '@/components/Sheet';
+import { ConfirmSheet, InfoSheet, MemberPickerSheet, SheetModal } from '@/components/Sheet';
 import { useToast } from '@/components/Toast';
 import {
   AppHeader,
@@ -10,7 +10,6 @@ import {
   EmptyState,
   ErrorState,
   LoadingState,
-  Pill,
   PrimaryButton,
   Screen,
   SegmentedTabs,
@@ -41,7 +40,6 @@ export default function TasksScreen() {
   const [pickerTask, setPickerTask] = useState<CatalogTask | null>(null);
   const [sheet, setSheet] = useState<SheetState>({ mode: 'closed' });
   const [deleteTarget, setDeleteTarget] = useState<CatalogTask | null>(null);
-  const [aiSheet, setAiSheet] = useState(false);
   const [penaltyInfo, setPenaltyInfo] = useState(false);
   const [taskPendingInfo, setTaskPendingInfo] = useState(false);
 
@@ -104,11 +102,6 @@ export default function TasksScreen() {
           { value: 'penalty', label: t('tasks.penalty'), icon: '⚠️', tone: 'penalty' },
         ]}
       />
-
-      <Card tone="ai" style={styles.aiStrip} onPress={() => setAiSheet(true)}>
-        <Text style={styles.aiStripText}>{t('tasks.askAi')}</Text>
-        <Pill label={t('common.soon')} tone="ai" />
-      </Card>
 
       {tasks.length === 0 ? (
         <EmptyState icon="📝" title={t('tasks.empty')} />
@@ -182,14 +175,6 @@ export default function TasksScreen() {
             toast(messageForError(e), 'error');
           }
         }}
-      />
-
-      <ComingSoonSheet
-        visible={aiSheet}
-        onClose={() => setAiSheet(false)}
-        title={t('weekly.aiJudge')}
-        body={t('settings.aiJudgeInfo')}
-        icon="🔨"
       />
 
       <InfoSheet
@@ -345,18 +330,6 @@ const createStyles = (colors: ThemeColors) =>
     fontSize: 24,
     fontWeight: '800',
     lineHeight: 28,
-  },
-  aiStrip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: spacing.md,
-    paddingVertical: spacing.md,
-  },
-  aiStripText: {
-    fontSize: fontSize.cardTitle,
-    fontWeight: '800',
-    color: colors.aiDeep,
   },
   grid: {
     flexDirection: 'row',
